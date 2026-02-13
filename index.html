@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>С 14 февраля ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
+
+h1 {
+    margin-top: 40px;
+    font-size: 42px;
+    opacity: 0;
+    animation: fadeIn 3s forwards;
+}
+
+p {
+    font-size: 20px;
+    opacity: 0;
+    animation: fadeIn 5s forwards;
+}
+
+video {
+    width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px red;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4e78;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ffe6ec;
+}
+
+.heart {
+    position: absolute;
+    color: red;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.click-heart {
+    position: absolute;
+    color: white;
+    pointer-events: none;
+    animation: clickAnim 1s forwards;
+}
+
+@keyframes clickAnim {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>С 14 февраля ❤️</h1>
+
+<p>Для тебя, <b>Диляре</b> 💌</p>
+
+<video controls>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+<br>
+
+<button onclick="showLove()">Нажми сюда 💖</button>
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function createFloatingHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 25 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createFloatingHeart, 400);
+
+function showLove() {
+    alert("Ты — самое лучшее что появилось в моей жизни ");
+    document.getElementById("music").play();
+}
+
+document.addEventListener("click", function(e) {
+    const heart = document.createElement("div");
+    heart.classList.add("click-heart");
+    heart.innerHTML = "💖";
+    heart.style.left = e.pageX + "px";
+    heart.style.top = e.pageY + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 1000);
+});
+</script>
+
+</body>
+</html>
